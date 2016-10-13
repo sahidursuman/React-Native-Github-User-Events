@@ -1,23 +1,4 @@
-import React, { Component } from 'react';
-import {
-  AppRegistry,
-  Text,
-  Image,
-  View
-} from 'react-native';
-
-class TestProject extends Component {
-  render() {
-    let pic = {
-      uri: 'https://pbs.twimg.com/media/CS-IToTWoAA3Eiq.jpg'
-    };
-    return (
-      <View>
-        <Image source={pic} style={{ width: 193, height: 110 }} />
-        <Text>Hello World!</Text>
-      </View>
-    );
-  }
-}
+import {AppRegistry,} from 'react-native';
+import TestProject from './app'
 
 AppRegistry.registerComponent('TestProject', () => TestProject);
