@@ -1,4 +1,15 @@
-import {AppRegistry,} from 'react-native';
+import React, { Component } from 'react';
+import { AppRegistry, Text, View } from 'react-native';
 import TestProject from './app'
 
-AppRegistry.registerComponent('TestProject', () => TestProject);
+class Greeting extends Component {
+  render() {
+    return (
+      <View style={{alignItems: 'center'}}>
+        <TestProject name='Julian' />
+      </View>
+    );
+  }
+}
+
+AppRegistry.registerComponent('TestProject', () => Greeting);
