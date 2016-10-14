@@ -14,9 +14,21 @@ export default class TestProject extends Component {
         return (
             <View style={{ alignItems: 'center' }}>
                 <Image source={pic} style={{ width: 193, height: 110 }} />
-                <Text>Hello {this.props.name}!</Text>
+                <Text>Hi {this.props.name}!</Text>
             </View>
         );
     }
 }
+
+class Greeting extends Component {
+  render() {
+    return (
+      <View style={{alignItems: 'center'}}>
+        <TestProject name='Julian' />
+      </View>
+    );
+  }
+}
+
+module.exports = Greeting
 
