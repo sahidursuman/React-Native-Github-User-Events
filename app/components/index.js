@@ -1,10 +1,7 @@
-import React, { Component } from 'react';
-import {
-    Text,
-    Image,
-    View,
-    AppRegistry
-} from 'react-native';
+import React, { Component } from 'react'
+import {Text, Image, View, AppRegistry
+} from 'react-native'
+import ViewContainer from './ViewContainer'
 
 export default class TestProject extends Component {
     render() {
@@ -15,6 +12,9 @@ export default class TestProject extends Component {
             <View style={{ alignItems: 'center' }}>
                 <Image source={pic} style={{ width: 193, height: 110 }} />
                 <Text>Hi {this.props.name}!</Text>
+                <ViewContainer>
+                <Text>Text From ViewContainer</Text>
+                </ViewContainer>
             </View>
         );
     }
