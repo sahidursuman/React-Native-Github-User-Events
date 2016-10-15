@@ -14,10 +14,6 @@ class ViewContainer extends Component {
 const styles = StyleSheet.create({
 
     viewContainer: {
-        flex: 1,
-        flexDirection: "column",
-        justifyContent: 'space-between',
-        alignItems: 'center',
         backgroundColor: "yellow"
     }
 })

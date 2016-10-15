@@ -1,20 +1,29 @@
 import React, { Component } from 'react'
-import { Text, Image, View, AppRegistry, StyleSheet} from 'react-native'
+import { Text, Image, View, AppRegistry, StyleSheet, Dimensions} from 'react-native'
 import ViewContainer from './ViewContainer'
+import EStyleSheet from 'react-native-extended-stylesheet';
+
+EStyleSheet.build({
+    textColor: '#0275d8'
+});
 
 export default class TestProject extends Component {
     render() {
         let pic = {
-            uri: 'https://pbs.twimg.com/media/CS-IToTWoAA3Eiq.jpg'
+            uri: 'http://orig14.deviantart.net/3428/f/2016/150/f/e/my_anime_list_banner_by_weaselmon-da4cin6.png'
         };
         return (
-            <View style={styles.viewContainer}>
-                <Image source={pic} style={{ width: 300, height: 300 }} />
-                <Text>Hi {this.props.name}!</Text>
+            <View>
+                <Image source={pic} style={styles.banner} />
+                <Text style={styles.greetingText}>Hi, {this.props.name}!</Text>
                 <ViewContainer>
                     <Text>Text From ViewContainer</Text>
-                    <Text style={{backgroundColor: 'skyblue'}}>2nd Text</Text>
                 </ViewContainer>
+                <View style={styles.flexStyle}>
+                    <Text style={styles.text1}>Flex1</Text>
+                    <Text style={styles.text2}>Flex2</Text>
+                    <Text style={styles.text3}>Flex3</Text>
+                </View>
             </View>
         );
     }
@@ -23,19 +32,35 @@ export default class TestProject extends Component {
 class Greeting extends Component {
     render() {
         return (
-            <View style={{ alignItems: 'center' }}>
+            <View>
                 <TestProject name='Julian' />
             </View>
         );
     }
 }
 
-var styles = StyleSheet.create({
-
-    main: {
+var styles = EStyleSheet.create({
+    text1: {
         flex: 1,
-        flexDirection: "column",
-        justifyContent: 'space-between',
+        backgroundColor: 'orange'
+    },
+    text2: {
+        flex: 2,
+        backgroundColor: 'skyblue'
+    },
+    text3: {
+        flex: 1,
+        backgroundColor: 'red'
+    },
+    banner: {
+        height: '15%'
+    },
+    greetingText: {
+        color: '$textColor',
+        fontSize: '1.5rem'
+    },
+    flexStyle: {
+        flexDirection: "row",
     }
 })
 
