@@ -21,22 +21,9 @@ export default class TestProject extends Component {
         return (
             <View>
                 <BasePresentation
-                    name={this.name}
-                    setName={this.setName} />
+                    setName={this.setName}
+                    updateName={this.updateName} />
             </View>
         )
     }
 }
-
-class Greeting extends Component {
-    render() {
-        return (
-            <View>
-                <TestProject defaultName='Julian' />
-            </View>
-        );
-    }
-}
-
-module.exports = Greeting
-
