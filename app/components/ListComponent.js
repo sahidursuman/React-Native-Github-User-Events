@@ -42,7 +42,7 @@ export default class ListCompontent extends Component {
                     source={{ uri: movie.posters.thumbnail }}
                     style={styles.thumbnail} />
                 <View style={styles.movieText}>
-                    <Text style={styles.title}>{movie.title}</Text>
+                    <Text numberOfLines={2} style={styles.title}>{movie.title}</Text>
                     <Text style={styles.year}>{movie.year}</Text>
                 </View>
             </View>
@@ -54,18 +54,17 @@ var styles = StyleSheet.create({
     thumbnail: {
         flex: 1,
         width: 53,
-        height: 81,
+        height: 81
     },
     movieText: {
-        flex:25,
+        flex: 25,
         marginLeft: 16
     },
     title: {
-        fontSize: 20,
+        fontSize: 20
     },
     listView: {
-        paddingTop: 20,
-        backgroundColor: 'skyblue',
+        backgroundColor: 'skyblue'
     },
     container: {
         flexDirection: 'row',
@@ -73,7 +72,7 @@ var styles = StyleSheet.create({
         padding: 16,
         height: 100,
         alignItems: 'center',
-        justifyContent: 'center',
+        justifyContent: 'center'
     },
     row: {
         fontWeight: 'bold',
