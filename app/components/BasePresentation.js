@@ -11,24 +11,29 @@ EStyleSheet.build({
 
 const BasePresentation = (props) => {
     let pic = {
-        uri: 'http://spotlightreport.net/wp-content/uploads/2011/06/MTV-movie-awards-logo-banner.jpg'
+        uri: 'http://moviereelizations.com/wp-content/uploads/2015/03/cropped-cropped-tumblr_static_logo1-e1425952896142.png'
     };
     return (
         <View>
             <Image source={pic} style={styles.banner} />
             <View style={styles.inputRow}>
                 <TextInput style={styles.inputText}
-                    placeholder="Who are you?"
+                    placeholder="Your Name"
                     onChangeText={props.updateName} />
                 <TouchableHighlight
-                    style={styles.submit}
+                    underlayColor='#0099CC'
+                    style={styles.submitButton}
                     onPress={() => props.setName(props.name)}>
-                    <Text>Submit</Text>
+                    <Text style={styles.submitButtonText}>Submit</Text>
                 </TouchableHighlight>
             </View>
             <View style={styles.headers}>
-                <Text style={styles.text1}>Flex1</Text>
-                <Text style={styles.text2}>Flex2</Text>
+                <View style={styles.textView1}>
+                    <Text style={styles.headerText}>Poster</Text>
+                </View>
+                <View style={styles.textView2}>
+                    <Text style={styles.headerText}>Information</Text>
+                </View>
             </View>
         </View >
     )
@@ -38,32 +43,48 @@ var styles = EStyleSheet.create({
     inputText: {
         flex: 3
     },
-    text1: {
+    textView1: {
         flex: 1,
         width: '20%',
-        paddingRight: 16,
-        backgroundColor: 'orange'
+        backgroundColor: '#003399',
+        alignItems: 'center',
+        padding: 8
     },
-    text2: {
+    textView2: {
         flex: 1,
         width: '80%',
-        backgroundColor: 'skyblue'
+        backgroundColor: '#0099CC',
+        alignItems: 'center',
+        padding: 8
     },
     banner: {
-        height: '25%',
+        height: '20%',
+        width: '100%',
+        resizeMode: 'contain',
+        marginTop: 10
     },
     headers: {
         flexDirection: "row",
+    },
+    headerText: {
+        fontWeight: 'bold',
+        fontSize: 16,
+        color: 'white'
     },
     inputRow: {
         flexDirection: "row",
         alignItems: "center",
         justifyContent: "center"
     },
-    submit: {
+    submitButton: {
         flex: 1,
-        backgroundColor: 'silver',
-        padding: 10
+        backgroundColor: 'skyblue',
+        padding: 10,
+        alignItems: 'center'
+    },
+    submitButtonText: {
+        fontSize: 14,
+        fontWeight: 'bold'
     }
 })
 
