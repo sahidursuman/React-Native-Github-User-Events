@@ -32,7 +32,7 @@ const BasePresentation = (props) => {
                     <Text style={styles.headerText}>Poster</Text>
                 </View>
                 <View style={styles.textView2}>
-                    <Text style={styles.headerText}>Information</Text>
+                    <Text style={styles.headerText}>Movie Information</Text>
                 </View>
             </View>
         </View >
@@ -41,7 +41,8 @@ const BasePresentation = (props) => {
 
 var styles = EStyleSheet.create({
     inputText: {
-        flex: 3
+        flex: 3,
+        marginRight: 20
     },
     textView1: {
         flex: 1,
@@ -74,7 +75,12 @@ var styles = EStyleSheet.create({
     inputRow: {
         flexDirection: "row",
         alignItems: "center",
-        justifyContent: "center"
+        justifyContent: "center",
+        paddingLeft: 10,
+        paddingRight: 10,
+        '@media ios': {
+            paddingBottom: 10
+        },
     },
     submitButton: {
         flex: 1,
