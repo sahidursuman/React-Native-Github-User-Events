@@ -16,20 +16,19 @@ const BasePresentation = (props) => {
     return (
         <View>
             <Image source={pic} style={styles.banner} />
-            <View style={styles.flexStyle}>
+            <View style={styles.inputRow}>
                 <TextInput style={styles.inputText}
                     placeholder="Who are you?"
                     onChangeText={props.updateName} />
                 <TouchableHighlight
                     style={styles.submit}
-                    onPress={ () => props.setName(props.name)}>
-                    <Text style={{ textAlign: 'center' }}>Submit</Text>
+                    onPress={() => props.setName(props.name)}>
+                    <Text>Submit</Text>
                 </TouchableHighlight>
             </View>
-            <View style={styles.flexStyle}>
+            <View style={styles.headers}>
                 <Text style={styles.text1}>Flex1</Text>
                 <Text style={styles.text2}>Flex2</Text>
-                <Text style={styles.text3}>Flex3</Text>
             </View>
         </View >
     )
@@ -41,20 +40,22 @@ var styles = EStyleSheet.create({
     },
     text1: {
         flex: 1,
+        width: '20%',
+        paddingRight: 16,
         backgroundColor: 'orange'
     },
     text2: {
-        flex: 2,
-        backgroundColor: 'skyblue'
-    },
-    text3: {
         flex: 1,
-        backgroundColor: 'red'
+        width: '80%',
+        backgroundColor: 'skyblue'
     },
     banner: {
         height: '25%',
     },
-    flexStyle: {
+    headers: {
+        flexDirection: "row",
+    },
+    inputRow: {
         flexDirection: "row",
         alignItems: "center",
         justifyContent: "center"

@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { View, ListView, StyleSheet, Text, Image } from 'react-native'
+import EStyleSheet from 'react-native-extended-stylesheet';
 
 const REQUEST_URL = 'https://raw.githubusercontent.com/facebook/react-native/master/docs/MoviesExample.json';
 
@@ -38,9 +39,10 @@ export default class ListCompontent extends Component {
     renderMovie = (movie) => {
         return (
             <View style={styles.container}>
-                <Image
-                    source={{ uri: movie.posters.thumbnail }}
-                    style={styles.thumbnail} />
+                <View style={styles.thumbnailContainer}>
+                    <Image style={{ width: 53, height: 81 }}
+                        source={{ uri: movie.posters.thumbnail }} />
+                </View>
                 <View style={styles.movieText}>
                     <Text numberOfLines={2} style={styles.title}>{movie.title}</Text>
                     <Text style={styles.year}>{movie.year}</Text>
@@ -50,15 +52,15 @@ export default class ListCompontent extends Component {
     }
 }
 
-var styles = StyleSheet.create({
-    thumbnail: {
+var styles = EStyleSheet.create({
+    thumbnailContainer: {
         flex: 1,
-        width: 53,
-        height: 81
+        width: '20%',
+        alignItems: 'center'
     },
     movieText: {
-        flex: 25,
-        marginLeft: 16
+        flex: 1,
+        width: '80%',
     },
     title: {
         fontSize: 20
@@ -69,13 +71,12 @@ var styles = StyleSheet.create({
     container: {
         flexDirection: 'row',
         flex: 1,
-        padding: 16,
         height: 100,
         alignItems: 'center',
         justifyContent: 'center'
     },
     row: {
         fontWeight: 'bold',
-        fontSize: 30
+        fontSize: 30,
     }
 });
