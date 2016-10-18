@@ -11,7 +11,7 @@ EStyleSheet.build({
 
 const BasePresentation = (props) => {
     let pic = {
-        uri: 'http://orig14.deviantart.net/3428/f/2016/150/f/e/my_anime_list_banner_by_weaselmon-da4cin6.png'
+        uri: 'http://spotlightreport.net/wp-content/uploads/2011/06/MTV-movie-awards-logo-banner.jpg'
     };
     return (
         <View>
@@ -52,7 +52,7 @@ var styles = EStyleSheet.create({
         backgroundColor: 'red'
     },
     banner: {
-        height: '15%'
+        height: '25%',
     },
     flexStyle: {
         flexDirection: "row",
