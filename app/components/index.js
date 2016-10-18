@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { View } from 'react-native'
+import { View, StyleSheet } from 'react-native'
 import BasePresentation from './BasePresentation'
 import ListComponent from './ListComponent'
 
@@ -20,7 +20,7 @@ export default class TestProject extends Component {
 
     render() {
         return (
-            <View>
+            <View style = {styles.viewStyle}>
                 <BasePresentation
                     setName={this.setName}
                     updateName={this.updateName} />
@@ -29,3 +29,9 @@ export default class TestProject extends Component {
         )
     }
 }
+
+var styles = StyleSheet.create({
+    viewStyle: {
+        flex: 1
+    }
+})

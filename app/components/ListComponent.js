@@ -1,42 +1,77 @@
 import React, { Component } from 'react'
-import { View, ListView, StyleSheet, Text } from 'react-native'
+import { View, ListView, StyleSheet, Text, Image } from 'react-native'
 
-const animeList = [
-    { title: "Naruto", ranking: 1 },
-    { title: "Bleach", ranking: 2 },
-    { title: "Attack on Titan", ranking: 3 },
-]
+const REQUEST_URL = 'https://raw.githubusercontent.com/facebook/react-native/master/docs/MoviesExample.json';
 
 export default class ListCompontent extends Component {
     constructor(props) {
         super(props)
-        var ds = new ListView.DataSource({ rowHasChanged: (r1, r2) => r1 != r2 })
+
         this.state = {
-            animeDataSource: ds.cloneWithRows(['row 1', 'row 2', 'row 3', 'row 4', 'row 5'])
+            dataSource: new ListView.DataSource({ rowHasChanged: (row1, row2) => row1 !== row2, })
         }
+    }
+
+    componentDidMount() {
+        this.fetchData();
+    }
+
+    fetchData = () => {
+        fetch(REQUEST_URL)
+            .then((response) => response.json())
+            .then((responseData) => {
+                this.setState({
+                    dataSource: this.state.dataSource.cloneWithRows(responseData.movies),
+                });
+            })
+            .done();
     }
 
     render() {
         return (
-            <ListView dataSource={this.state.animeDataSource}
-                contentContainerStyle={styles.container}
-                renderRow={(data) => <View><Text style={styles.row}>{data}</Text></View>} />
+            <ListView dataSource={this.state.dataSource}
+                style={styles.listView}
+                renderRow={this.renderMovie} />
         )
+    }
+
+    renderMovie = (movie) => {
+        return (
+            <View style={styles.container}>
+                <Image
+                    source={{ uri: movie.posters.thumbnail }}
+                    style={styles.thumbnail} />
+                <View style={styles.movieText}>
+                    <Text style={styles.title}>{movie.title}</Text>
+                    <Text style={styles.year}>{movie.year}</Text>
+                </View>
+            </View>
+        );
     }
 }
 
-renderAnimeRow = () => {
-    return (
-        <View>
-            <Text>animeList.title</Text>
-        </View>
-    )
-}
-
 var styles = StyleSheet.create({
-    container: {
+    thumbnail: {
         flex: 1,
-        padding: 8,
+        width: 53,
+        height: 81,
+    },
+    movieText: {
+        flex:25,
+        marginLeft: 16
+    },
+    title: {
+        fontSize: 20,
+    },
+    listView: {
+        paddingTop: 20,
+        backgroundColor: 'skyblue',
+    },
+    container: {
+        flexDirection: 'row',
+        flex: 1,
+        padding: 16,
+        height: 100,
         alignItems: 'center',
         justifyContent: 'center',
     },
