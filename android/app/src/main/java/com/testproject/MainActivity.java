@@ -5,6 +5,10 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.provider.Settings;
+import android.support.annotation.ColorRes;
+import android.support.v4.content.ContextCompat;
+import android.view.Window;
+import android.view.WindowManager;
 
 import com.facebook.react.ReactActivity;
 
@@ -14,6 +18,7 @@ public class MainActivity extends ReactActivity {
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
+        setStatusBarColor(R.color.skyBlue);
         super.onCreate(savedInstanceState);
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M && !BuildConfig.DEBUG) {
@@ -22,6 +27,14 @@ public class MainActivity extends ReactActivity {
                 Uri.parse("package:" + getPackageName()));
                 startActivityForResult(intent, OVERLAY_PERMISSION_REQ_CODE);
             }
+        }
+    }
+
+    public void setStatusBarColor(@ColorRes int statusBarColor) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            Window window = getWindow();
+            window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+            window.setStatusBarColor(ContextCompat.getColor(this, statusBarColor));
         }
     }
 
