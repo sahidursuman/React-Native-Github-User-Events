@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { View, ListView, StyleSheet, Text, Image } from 'react-native'
+import { View, ListView, StyleSheet, Text, Image, TouchableOpacity } from 'react-native'
 import EStyleSheet from 'react-native-extended-stylesheet';
 
 const REQUEST_URL = 'https://api.github.com/events';
@@ -45,7 +45,7 @@ export default class ListCompontent extends Component {
 
     renderEvent = (event) => {
         return (
-            <View style={styles.container}>
+            <TouchableOpacity style={styles.container}>
                 <View style={styles.avatarContainer}>
                     <Image
                         defaultSource={require('../../react.png')}
@@ -57,7 +57,7 @@ export default class ListCompontent extends Component {
                     <Text>{event.type}:</Text>
                     <Text>{event.repo.url}</Text>
                 </View>
-            </View>
+            </TouchableOpacity>
         );
     }
 }
@@ -97,6 +97,6 @@ var styles = EStyleSheet.create({
     },
     separator: {
         height: 1,
-        backgroundColor: '#262626'
+        backgroundColor: '#90141414'
     },
 });
