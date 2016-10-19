@@ -9,7 +9,7 @@ export default class ListCompontent extends Component {
         super(props)
 
         this.state = {
-            dataSource: new ListView.DataSource({ rowHasChanged: (row1, row2) => row1 !== row2, })
+            dataSource: new ListView.DataSource({ rowHasChanged: (row1, row2) => row1 !== row2 })
         }
     }
 
@@ -32,8 +32,15 @@ export default class ListCompontent extends Component {
         return (
             <ListView dataSource={this.state.dataSource}
                 style={styles.listView}
-                renderRow={this.renderEvent} />
+                renderRow={this.renderEvent}
+                renderSeparator={this.renderSeparator} />
         )
+    }
+
+    renderSeparator(sectionID, rowID) {
+        return (
+            <View style={styles.separator} key={sectionID + rowID} />
+        );
     }
 
     renderEvent = (event) => {
@@ -87,5 +94,9 @@ var styles = EStyleSheet.create({
     row: {
         fontWeight: 'bold',
         fontSize: 30,
-    }
+    },
+    separator: {
+        height: 1,
+        backgroundColor: '#262626'
+    },
 });
