@@ -41,7 +41,7 @@ export default class ListCompontent extends Component {
             <View style={styles.container}>
                 <View style={styles.avatarContainer}>
                     <Image
-                        defaultSource={require('./react.png')}
+                        defaultSource={require('../../react.png')}
                         style={styles.avatar}
                         source={{ uri: event.actor.avatar_url }} />
                 </View>
