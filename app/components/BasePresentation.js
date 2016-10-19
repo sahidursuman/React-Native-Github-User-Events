@@ -5,13 +5,11 @@ import {
 } from 'react-native'
 import EStyleSheet from 'react-native-extended-stylesheet';
 
-EStyleSheet.build({
-    textColor: '#0275d8'
-});
+EStyleSheet.build();
 
 const BasePresentation = (props) => {
     let pic = {
-        uri: 'http://moviereelizations.com/wp-content/uploads/2015/03/cropped-cropped-tumblr_static_logo1-e1425952896142.png'
+        uri: 'https://reconevent.files.wordpress.com/2015/06/github-logo-pagespeed-ce-3uvskionkv.png'
     };
     return (
         <View>
@@ -29,10 +27,10 @@ const BasePresentation = (props) => {
             </View>
             <View style={styles.headers}>
                 <View style={styles.textView1}>
-                    <Text style={styles.headerText}>Poster</Text>
+                    <Text style={styles.headerText}>User</Text>
                 </View>
                 <View style={styles.textView2}>
-                    <Text style={styles.headerText}>Movie Information</Text>
+                    <Text style={styles.headerText}>Event Information</Text>
                 </View>
             </View>
         </View >
@@ -59,10 +57,11 @@ var styles = EStyleSheet.create({
         padding: 8
     },
     banner: {
+        flex: 1,
         height: '20%',
-        width: '100%',
         resizeMode: 'contain',
-        marginTop: 10
+        marginTop: 8,
+        backgroundColor: 'white'
     },
     headers: {
         flexDirection: "row",
@@ -78,9 +77,11 @@ var styles = EStyleSheet.create({
         justifyContent: "center",
         paddingLeft: 10,
         paddingRight: 10,
+        backgroundColor: 'white',
         '@media ios': {
-            paddingBottom: 10
-        },
+            paddingBottom: 10,
+            paddingTop: 10
+        }
     },
     submitButton: {
         flex: 1,

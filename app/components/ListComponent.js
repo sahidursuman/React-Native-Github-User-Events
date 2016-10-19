@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { View, ListView, StyleSheet, Text, Image } from 'react-native'
 import EStyleSheet from 'react-native-extended-stylesheet';
 
-const REQUEST_URL = 'https://raw.githubusercontent.com/facebook/react-native/master/docs/MoviesExample.json';
+const REQUEST_URL = 'https://api.github.com/events';
 
 export default class ListCompontent extends Component {
     constructor(props) {
@@ -22,7 +22,7 @@ export default class ListCompontent extends Component {
             .then((response) => response.json())
             .then((responseData) => {
                 this.setState({
-                    dataSource: this.state.dataSource.cloneWithRows(responseData.movies),
+                    dataSource: this.state.dataSource.cloneWithRows(responseData),
                 });
             })
             .done();
@@ -32,20 +32,23 @@ export default class ListCompontent extends Component {
         return (
             <ListView dataSource={this.state.dataSource}
                 style={styles.listView}
-                renderRow={this.renderMovie} />
+                renderRow={this.renderEvent} />
         )
     }
 
-    renderMovie = (movie) => {
+    renderEvent = (event) => {
         return (
             <View style={styles.container}>
-                <View style={styles.thumbnailContainer}>
-                    <Image style={{ width: 53, height: 81 }}
-                        source={{ uri: movie.posters.thumbnail }} />
+                <View style={styles.avatarContainer}>
+                    <Image
+                        defaultSource={require('./react.png')}
+                        style={styles.avatar}
+                        source={{ uri: event.actor.avatar_url }} />
                 </View>
-                <View style={styles.movieText}>
-                    <Text numberOfLines={2} style={styles.title}>{movie.title}</Text>
-                    <Text style={styles.year}>{movie.year}</Text>
+                <View style={styles.eventText}>
+                    <Text numberOfLines={2} style={styles.displayName}>{event.actor.display_login}</Text>
+                    <Text>{event.type}:</Text>
+                    <Text>{event.repo.url}</Text>
                 </View>
             </View>
         );
@@ -53,16 +56,22 @@ export default class ListCompontent extends Component {
 }
 
 var styles = EStyleSheet.create({
-    thumbnailContainer: {
+    avatarContainer: {
         flex: 1,
         width: '20%',
         alignItems: 'center'
     },
-    movieText: {
+    avatar: {
+        width: 53,
+        height: 81,
+        resizeMode: 'contain'
+    },
+    eventText: {
         flex: 1,
         width: '80%',
+        paddingRight: 5
     },
-    title: {
+    displayName: {
         fontSize: 20
     },
     listView: {
