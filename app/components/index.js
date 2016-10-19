@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { View, StyleSheet } from 'react-native'
-import BasePresentation from './BasePresentation'
+import BasePresentation from '../presentation/BasePresentation'
 import ListComponent from './ListComponent'
 
 export default class TestProject extends Component {

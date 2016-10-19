@@ -91,7 +91,8 @@ var styles = EStyleSheet.create({
     },
     submitButtonText: {
         fontSize: 14,
-        fontWeight: 'bold'
+        fontWeight: 'bold',
+        color: 'white'
     }
 })
 
